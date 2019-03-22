@@ -28,7 +28,21 @@ class DatabaseConnection:
                     last_name VARCHAR(20) NOT NULL,
                     trip_destination VARCHAR(20) NOT NULL,
                     pourpose VARCHAR(20) NOT NULL,
-                    time INTEGER NOT NULL
+                    depature_time VARCHAR(20) NOT NULL,
+                    expected_return_time VARCHAR(20) NOT NULL,
+                    status VARCHAR(20) NOT NULL
+
+                )
+            """,
+            """
+                 CREATE TABLE IF NOT EXISTS room_booking (                    
+                    room_booking_id SERIAL PRIMARY KEY,
+                    room_name VARCHAR(20) NOT NULL,
+                    meeting_name VARCHAR(20) NOT NULL,
+                    start_time VARCHAR(20) NOT NULL,
+                    end_time VARCHAR(20) NOT NULL,
+                    meeting_duration VARCHAR(20) NOT NULL,
+                    status VARCHAR(20) NOT NULL
 
                 )
             """
@@ -79,13 +93,13 @@ class DatabaseConnection:
     """
     method to drop tables being used in my tests
     """
-    # def drop_tables(self):
-    #     query = "DROP TABLE IF EXISTS {} CASCADE"
-    #     tabl_names = ["car_booking, users"]
-    #     for name in tabl_names:
-    #         self.cursor.execute(query.format(name))
-    #
-    # def create_tables(self):
-    #     for command in self.commands:
-    #         self.cursor.execute(command)
+    def drop_tables(self):
+        query = "DROP TABLE IF EXISTS {} CASCADE"
+        tabl_names = ["car_booking, users"]
+        for name in tabl_names:
+            self.cursor.execute(query.format(name))
+
+    def create_tables(self):
+        for command in self.commands:
+            self.cursor.execute(command)
 

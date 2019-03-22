@@ -1,6 +1,6 @@
 from flask import Flask
 
-from api.views.car_bookings import staff_blueprint as staff_blueprint
+from api.views.bookings_views import staff_blueprint as staff_blueprint
 
 
 def create_app():
