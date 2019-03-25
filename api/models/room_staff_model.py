@@ -14,10 +14,10 @@ class Room:
         self.meeting_duration = meeting_duration
         self.status = status
       
-    def insert_room_booking(self, room_name, meeting_name, start_time, end_time, meeting_duration, status):
-        insert_booking = "INSERT INTO room_booking(room_name, meeting_name, start_time, end_time, meeting_duration, status)" \
-                         " VALUES('{}','{}','{}','{}','{}','{}')".format(room_name, meeting_name, start_time, end_time,
-                                                                    meeting_duration, status)
+    def insert_room_booking(self, room_name, meeting_name, start_time, end_time, meeting_duration):
+        insert_booking = "INSERT INTO room_booking(room_name, meeting_name, start_time, end_time, meeting_duration)" \
+                         " VALUES('{}','{}','{}','{}','{}')".format(room_name, meeting_name, start_time, end_time,
+                                                                    meeting_duration)
         self.cursor.execute(insert_booking)
         return True
 
@@ -31,4 +31,19 @@ class Room:
         get_single_booking = "SELECT * FROM room_booking WHERE room_booking_id = {}".format(room_booking_id)
         self.cursor.execute(get_single_booking)
         result = self.cursor.fetchone()
+        return result
+
+    def update_room_approval_status(self, room_booking_id, status):
+        update_room_status = "UPDATE room_booking SET status= '{}' WHERE room_booking_id = '{}'".format(status,
+                                                                                                        room_booking_id)
+        self.cursor.execute(update_room_status)
+        query = "SELECT * FROM room_booking WHERE room_booking_id = '{}'".format(room_booking_id)
+        self.cursor.execute(query)
+        result = self.cursor.fetchone()
+        return result
+
+    def get_all_approved_room(self):
+        approved_cars = "SELECT * FROM room_booking WHERE status != False"
+        self.cursor.execute(approved_cars)
+        result = self.cursor.fetchall()
         return result

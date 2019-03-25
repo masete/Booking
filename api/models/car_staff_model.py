@@ -14,10 +14,10 @@ class Car:
         self.expected_return_time = expected_return_time
         self.status = status
 
-    def insert_new_booking(self, first_name, last_name, trip_destination, depature_time, expected_return_time, pourpose, status):
-        insert_booking = "INSERT INTO car_booking(first_name,last_name,trip_destination, depature_time, expected_return_time,pourpose, status)" \
-                         " VALUES('{}','{}','{}','{}','{}','{}','{}')".format(first_name, last_name, trip_destination,
-                                                                               pourpose, depature_time, expected_return_time, status)
+    def insert_new_booking(self, first_name, last_name, trip_destination, depature_time, expected_return_time, pourpose):
+        insert_booking = "INSERT INTO car_booking(first_name,last_name,trip_destination, depature_time, expected_return_time,pourpose)" \
+                         " VALUES('{}','{}','{}','{}','{}','{}')".format(first_name, last_name, trip_destination,
+                                                                               pourpose, depature_time, expected_return_time)
         self.cursor.execute(insert_booking)
         return True
 
@@ -32,5 +32,22 @@ class Car:
         self.cursor.execute(get_single_booking)
         result = self.cursor.fetchone()
         return result
+
+    def update_car_approval_status(self, booking_id, status):
+        update_car_status = "UPDATE car_booking SET status = '{}' WHERE booking_id = '{}'".format(status, booking_id)
+        self.cursor.execute(update_car_status)
+        query = "SELECT * FROM car_booking WHERE booking_id = '{}'".format(booking_id)
+        self.cursor.execute(query)
+        result = self.cursor.fetchone()
+        return result
+
+    def get_all_approved_cars(self):
+        approved_cars = "SELECT * FROM car_booking WHERE status != False"
+        self.cursor.execute(approved_cars)
+        result = self.cursor.fetchall()
+        return result
+
+
+
 
 

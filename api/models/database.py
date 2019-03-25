@@ -2,7 +2,6 @@
 import psycopg2
 import os
 from psycopg2.extras import RealDictCursor
-# from werkzeug.security import generate_password_hash
 
 
 class DatabaseConnection:
@@ -16,8 +15,7 @@ class DatabaseConnection:
                     user_id SERIAL PRIMARY KEY,
                     username VARCHAR(50) NOT NULL,
                     email VARCHAR(100) NOT NULL,
-                    password VARCHAR(200) NOT NULL,
-                    role BOOLEAN DEFAULT FALSE NOT NULL
+                    as_admin BOOLEAN DEFAULT FALSE NOT NULL
                     )
 
             """,
@@ -30,7 +28,7 @@ class DatabaseConnection:
                     pourpose VARCHAR(20) NOT NULL,
                     depature_time VARCHAR(20) NOT NULL,
                     expected_return_time VARCHAR(20) NOT NULL,
-                    status VARCHAR(20) NOT NULL
+                    status BOOLEAN  DEFAULT FALSE NOT NULL
 
                 )
             """,
@@ -42,18 +40,13 @@ class DatabaseConnection:
                     start_time VARCHAR(20) NOT NULL,
                     end_time VARCHAR(20) NOT NULL,
                     meeting_duration VARCHAR(20) NOT NULL,
-                    status VARCHAR(20) NOT NULL
+                    status BOOLEAN  DEFAULT FALSE NOT NULL
 
                 )
             """
         )
         try:
-            # self.attributes = dict(dbname='senditdb',
-            #                        user='postgres',
-            #                        password='qwerty',
-            #                        host='localhost',
-            #                        port='5432')
-            # self.connection = psycopg2.connect(**self.attributes, cursor_factory=RealDictCursor)
+
             if os.getenv("FLASK_ENV") == "production":
                 self.connection = psycopg2.connect(os.getenv("DATABASE_URL"), cursor_factory=RealDictCursor)
 
@@ -79,16 +72,15 @@ class DatabaseConnection:
         except Exception as error:
             print(f"error: {error}")
 
-        # self.cursor.execute("SELECT * FROM users WHERE email= '{}'".format("admin@gmail.com"))
-        # if self.cursor.fetchone():
-        #     return None
-        # # set admin user
-        # hash_pwd = generate_password_hash("masete24")
-        # sql = "INSERT INTO users(username, email, password, role) VALUES('admin', 'admin@gmail.com', '{}', True)"\
-        #     .format(hash_pwd)
-        #
-        # self.cursor.execute(sql)
-        # self.connection.commit()
+        self.cursor.execute("SELECT * FROM users WHERE email= '{}'".format("admin@gmail.com"))
+        if self.cursor.fetchone():
+            return None
+        # set admin user
+
+        sql = "INSERT INTO users(username, email, as_admin) VALUES('admin', 'admin@gmail.com', True)"
+
+        self.cursor.execute(sql)
+        self.connection.commit()
 
     """
     method to drop tables being used in my tests

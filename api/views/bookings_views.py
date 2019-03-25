@@ -19,11 +19,10 @@ def create_a_car_booking():
         pourpose = data.get('pourpose')
         depature_time = data.get('depature_time')
         expected_return_time = data.get('expected_return_time')
-        status = data.get('status')
     except:
         return jsonify({"message": "bad request"}), 400
 
-    request_car = car.insert_new_booking(first_name, last_name, trip_destination, pourpose, depature_time, expected_return_time, status)
+    request_car = car.insert_new_booking(first_name, last_name, trip_destination, pourpose, depature_time, expected_return_time)
 
     if request_car:
         return jsonify({'message': "booking with pourpose {} has been added".format(pourpose)}), 201
@@ -54,9 +53,8 @@ def book_a_room():
     start_time = data.get('start_time')
     end_time = data.get('end_time')
     meeting_duraion = data.get('meeting_duration')
-    status = data.get('status')
 
-    room_record = room.insert_room_booking(room_name, meeting_name, start_time, end_time, meeting_duraion, status)
+    room_record = room.insert_room_booking(room_name, meeting_name, start_time, end_time, meeting_duraion)
 
     if room_record:
         return jsonify({'message': "request to book room has been submitted"}), 201
@@ -78,8 +76,40 @@ def get_one_room_booking(room_booking_id):
     return jsonify({"single_room": single_booking}), 200
 
 
+# admin endpoint
+@staff_blueprint.route('/api/v1/approve_car_booking/<int:booking_id>', methods=['PUT'], strict_slashes=False)
+def edit_car_request_status(booking_id):
+
+    data = request.get_json()
+    status = data.get('status')
+
+    car_status = car.update_car_approval_status(booking_id, status)
+    return jsonify({"message": "car booking status has been changed successfully", "status changed": car_status})
 
 
+# admin endpoint
+@staff_blueprint.route('/api/v1/approve_room_booking/<int:room_booking_id>', methods=['PUT'], strict_slashes=False)
+def edit_room_request_status(room_booking_id):
+    data = request.get_json()
+    status = data.get('status')
+
+    room_status = room.update_room_approval_status(room_booking_id, status)
+    return jsonify({"message": "room booking status has been changed successfully", "status changed": room_status})
+
+
+# admin endpoint
+@staff_blueprint.route('/api/v1/get_all_approved_car_requests', methods=['GET'], strict_slashes=False)
+def get_all_approved_car_requests():
+
+    approved_cars = car.get_all_approved_cars()
+    return jsonify({"message": "List of all approved travels", "data": approved_cars}), 200
+
+
+# admin endpoint
+@staff_blueprint.route('/api/v1/get_all_approved_room_requests', methods=['GET'], strict_slashes=False)
+def get_all_approved_room_requests():
+    approved_rooms = room.get_all_approved_room()
+    return jsonify({"message": "List of all approved travels", "data": approved_rooms}), 200
 
 
 
