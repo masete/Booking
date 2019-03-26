@@ -8,13 +8,14 @@ user = Users()
 user_blueprint = Blueprint("User", __name__)
 
 
-@user_blueprint.route('/api/v1/add_user', methods=['POST'], strict_slashes=False)
+@user_blueprint.route('/api/auth/add_user', methods=['POST'], strict_slashes=False)
 def add_user():
     data = request.get_json()
     username = data.get('username')
     email = data.get('email')
+    password = data.get('password')
 
-    new_user = user.add_new_user(username, email)
+    new_user = user.add_new_user(username, email, password)
     if new_user:
         return jsonify({"message": "user added successfully"})
     return jsonify({"message": "user not added"})
@@ -23,23 +24,23 @@ def add_user():
 @user_blueprint.route('/api/auth/login', methods=['POST'], strict_slashes=False)
 def user_login():
     data = request.get_json()
-    username = data.get('username')
     email = data.get('email')
+    password = data.get('password')
 
     check_user = user.get_user_by_email(email)
 
     if not check_user:
         return jsonify({"message": "first signup please"})
-    check_username = check_user['username'], username
+    check_pwd = check_user['password']==password
 
-    if check_username:
+    if check_pwd:
         my_identity = dict(
             user_id=check_user.get('user_id'),
             as_admin=check_user.get('as_admin')
         )
         return jsonify({"message": "logged in successfully", "access_token": create_access_token(identity=my_identity,
                                                                                                  expires_delta=timedelta(hours=3))})
-    return jsonify({"message": "your email is not recogonised"})
+    return jsonify({"message": "your email or password is incorrect"})
 
 
 @user_blueprint.route('/api/v1/get_all_users', methods=['GET'], strict_slashes=False)

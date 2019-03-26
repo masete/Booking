@@ -15,6 +15,7 @@ class DatabaseConnection:
                     user_id SERIAL PRIMARY KEY,
                     username VARCHAR(50) NOT NULL,
                     email VARCHAR(100) NOT NULL,
+                    password VARCHAR(200) NOT NULL, 
                     as_admin BOOLEAN DEFAULT FALSE NOT NULL
                     )
 
@@ -79,7 +80,7 @@ class DatabaseConnection:
             return None
         # set admin user
 
-        sql = "INSERT INTO users(username, email, as_admin) VALUES('admin', 'admin@gmail.com', True)"
+        sql = "INSERT INTO users(username, email, password, as_admin) VALUES('admin', 'admin@gmail.com', 12345, True)"
 
         self.cursor.execute(sql)
         self.connection.commit()
