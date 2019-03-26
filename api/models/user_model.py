@@ -1,3 +1,4 @@
+from flask import jsonify
 from api.models.database import DatabaseConnection
 
 
@@ -14,8 +15,9 @@ class Users:
     def add_new_user(self, username, email):
         query = "INSERT INTO users(username, email) VALUES('{}','{}')".format(username, email)
         self.cursor.execute(query)
+        return jsonify({"massage": "user added succefully"})
 
-    def get_user_by_username(self, email):
+    def get_user_by_email(self, email):
         result = "SELECT * FROM users WHERE email = '{}'".format(email)
         self.cursor.execute(result)
         query1 = self.cursor.fetchone()

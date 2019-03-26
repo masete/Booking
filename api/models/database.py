@@ -22,6 +22,7 @@ class DatabaseConnection:
             """
                  CREATE TABLE IF NOT EXISTS car_booking (                    
                     booking_id SERIAL PRIMARY KEY,
+                    user_id INT REFERENCES users(user_id),
                     first_name VARCHAR(20) NOT NULL,
                     last_name VARCHAR(20) NOT NULL,
                     trip_destination VARCHAR(20) NOT NULL,
@@ -35,6 +36,7 @@ class DatabaseConnection:
             """
                  CREATE TABLE IF NOT EXISTS room_booking (                    
                     room_booking_id SERIAL PRIMARY KEY,
+                    user_id INT REFERENCES users(user_id),
                     room_name VARCHAR(20) NOT NULL,
                     meeting_name VARCHAR(20) NOT NULL,
                     start_time VARCHAR(20) NOT NULL,
@@ -87,8 +89,8 @@ class DatabaseConnection:
     """
     def drop_tables(self):
         query = "DROP TABLE IF EXISTS {} CASCADE"
-        tabl_names = ["car_booking, users"]
-        for name in tabl_names:
+        table_names = ["car_booking, users"]
+        for name in table_names:
             self.cursor.execute(query.format(name))
 
     def create_tables(self):

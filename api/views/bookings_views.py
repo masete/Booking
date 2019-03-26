@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import (jwt_required, get_jwt_identity, create_access_token)
 from api.models.car_staff_model import Car
 from api.models.room_staff_model import Room
 
@@ -9,6 +10,7 @@ staff_blueprint = Blueprint("staff", __name__)
 
 
 @staff_blueprint.route('/api/v1/book_a_car', methods=['POST'], strict_slashes=False)
+@jwt_required
 def create_a_car_booking():
     data = request.get_json()
 
@@ -30,6 +32,7 @@ def create_a_car_booking():
 
 
 @staff_blueprint.route('/api/v1/get_all_bookings', methods=['GET'], strict_slashes=False)
+@jwt_required
 def get_my_bookings():
 
     all_bookings = car.get_all_car_booking()
@@ -37,6 +40,7 @@ def get_my_bookings():
 
 
 @staff_blueprint.route('/api/v1/get_single_booking/<int:booking_id>', methods=['GET'], strict_slashes=False)
+@jwt_required
 def get_single_booking(booking_id):
     single_booking = car.get_booking_by_staff_id(booking_id)
     if not single_booking:
@@ -45,6 +49,7 @@ def get_single_booking(booking_id):
 
 
 @staff_blueprint.route('/api/v1/book_a_room', methods=['POST'], strict_slashes=False)
+@jwt_required
 def book_a_room():
     data = request.get_json()
 
@@ -62,6 +67,7 @@ def book_a_room():
 
 
 @staff_blueprint.route('/api/v1/get_all_room_bookings', methods=['GET'], strict_slashes=False)
+@jwt_required
 def get_my_room_bookings():
 
     all_bookings = room.get_all_room_booking()
@@ -69,6 +75,7 @@ def get_my_room_bookings():
 
 
 @staff_blueprint.route('/api/v1/get_single_room_booking/<int:room_booking_id>', methods=['GET'], strict_slashes=False)
+@jwt_required
 def get_one_room_booking(room_booking_id):
     single_booking = room.get_booking_by_id(room_booking_id)
     if not single_booking:
@@ -78,7 +85,13 @@ def get_one_room_booking(room_booking_id):
 
 # admin endpoint
 @staff_blueprint.route('/api/v1/approve_car_booking/<int:booking_id>', methods=['PUT'], strict_slashes=False)
+@jwt_required
 def edit_car_request_status(booking_id):
+
+    user_role = get_jwt_identity()
+
+    if user_role['as_admin'] != True:
+        return jsonify({"message": "your not authorised"}), 401
 
     data = request.get_json()
     status = data.get('status')
@@ -89,7 +102,14 @@ def edit_car_request_status(booking_id):
 
 # admin endpoint
 @staff_blueprint.route('/api/v1/approve_room_booking/<int:room_booking_id>', methods=['PUT'], strict_slashes=False)
+@jwt_required
 def edit_room_request_status(room_booking_id):
+
+    user_role = get_jwt_identity()
+
+    if user_role['as_admin'] != True:
+        return jsonify({"message": "your not authorised"}), 401
+
     data = request.get_json()
     status = data.get('status')
 
@@ -99,6 +119,7 @@ def edit_room_request_status(room_booking_id):
 
 # admin endpoint
 @staff_blueprint.route('/api/v1/get_all_approved_car_requests', methods=['GET'], strict_slashes=False)
+@jwt_required
 def get_all_approved_car_requests():
 
     approved_cars = car.get_all_approved_cars()
@@ -107,6 +128,7 @@ def get_all_approved_car_requests():
 
 # admin endpoint
 @staff_blueprint.route('/api/v1/get_all_approved_room_requests', methods=['GET'], strict_slashes=False)
+@jwt_required
 def get_all_approved_room_requests():
     approved_rooms = room.get_all_approved_room()
     return jsonify({"message": "List of all approved travels", "data": approved_rooms}), 200
