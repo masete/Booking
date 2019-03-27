@@ -1,0 +1,504 @@
+/*** fonts ***/
+@font-face{
+    font-family: "AGENCYB";
+    src: url('../fonts/Agency/AGENCYB.TTF');
+}
+
+/*** defaults ***/
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #eeeeee;
+}
+h1, h2, h3{
+    font-family: "AGENCYB";
+    color: #16a085;
+    text-transform: uppercase;
+}
+.ctr{
+    text-align: center;
+}
+.lft{
+    text-align: left;
+}
+.rgt{
+    text-align: right;
+}
+p, label, span, li, td{
+    font-family: "Lato", "Arial", sans-serif;
+    color: grey;
+}
+
+/*** index page ***/
+img.landing-img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 300px;
+    z-index: 0;
+}
+header{
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    overflow: auto;
+    padding: 10px 0px;
+    top: 0px;
+}
+header img{
+    float: left;
+    height: 30px;
+    width: 30px;
+    margin-left: 45px;
+}
+header ul{
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    margin-right: 45px;
+    margin-top: 6px;
+}
+header ul li{
+    display: inline;
+    margin: 0px 5px 0px 30px;
+    padding: 0px;
+}
+header ul li a{
+    font-family: "Lato", "Arial", sans-serif;
+    color: white;
+    text-decoration: none;
+}
+header ul li a:hover{
+    color: #eeeeee;
+}
+div.stats{
+    position: absolute;
+    background: white;
+    z-index: 1;
+    top: 220px;
+    width: 60%;
+    left: 20%;
+    height: 120px;
+    overflow: auto;
+    padding: 15px;
+}
+div.rcd{
+    float: left;
+    width: 23%;
+    margin: 0px 1%;
+    height: 100%;
+}
+div.rcd img{
+    width: 40px;
+    height: 40px;
+    margin-left: 40%;
+    margin-top: 6%;
+}
+div.rcd h3{
+    margin: 5px 0px;
+    padding: 0px;
+}
+div.rcd p{
+    margin: 0px;
+    padding: 0px;
+}
+div.about-us{
+    margin: 400px 0px 0px 0px;
+    position: relative;
+    width: 100%;
+}
+div.about-us-content{
+    background: white;
+    width: 80%;
+    margin: auto;
+    overflow: auto;
+    padding: 15px;
+}
+div.about-us-content img{
+    float: left;
+    width: 45%;
+    height: 400px;
+    margin-right: 1.5%;
+}
+div.about-us-content div.abt-cont{
+    float: left;
+    width: 53%;
+}
+div.about-us-content div.abt-cont h1{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+div.about-us-content div.abt-cont p{
+    margin-bottom: 0px;
+}
+div.banner-up, div.banner-down{
+    width: 100%;
+    margin-top: 30px;
+    height: 290px;
+}
+
+div.banner-up img, div.banner-down img{
+    width: 100%;
+    height: 100%;
+}
+div.service-section{
+    background:white;
+    overflow: auto;
+    margin: auto;
+    width: 80%;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+div.service-section .service-details{
+    width: 30%;
+    margin: 1% .7%;
+    float: left;
+    padding: 10px;
+}
+div.service-section .service-details img{
+    width: 30px;
+    height: 30px;
+    margin: 10px 0px 0px 45%;
+}
+div.service-section .service-details h3{
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+}
+div.service-section .service-details p{
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+}
+div.banner-down{
+    height: 550px;
+}
+div.login-wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    top:0px;
+    left:0px;
+}
+div.login-wrapper .wrap{
+    position: relative;
+    margin: 10% auto auto auto;
+    background: #efefef;
+    width: 30%;
+    padding: 15px;
+}
+div#signup-wrapper .wrap{
+    margin-top: 2.5%;
+}
+div.login-wrapper .wrap p{
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+}
+div.login-wrapper .wrap p img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+}
+div.login-wrapper .wrap .form{
+    background: white;
+    margin-top: 15px;
+    padding: 15px;
+}
+div.login-wrapper .wrap .form p#login-error, div.login-wrapper .wrap .form p#sign-error, p#error-meso{
+    background: #dc3545;
+    text-align: left;
+    padding: 10px 10px;
+    color: white;
+    margin-bottom: 10px;
+    display: none;
+}
+div.login-wrapper .wrap .form .text, .text label{
+    display: block;
+}
+.text input[type='text'], .text input[type='password'], .text input[type='email'], .text input[type='number'], .text textarea{
+    margin: 10px 0px;
+    position: relative;
+    width: 91%;
+    padding: 10px 15px;
+    border: 2px solid #16a085;
+}
+.text button{
+    margin-top: 10px;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.text button.success{
+    background: #16a085;
+}
+.text h3{
+    margin: 0px;
+}
+.text p{
+    margin: 10px 0px;
+}
+.text button.danger{
+    background: #dc3545;
+}
+footer{
+    background-color: #16a085;
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+footer p{
+    margin: 0px;
+    padding: 0px;
+    color: white;
+}
+
+
+/*** order page ***/
+header#inside-header{
+    background: white;
+    border-bottom: 1px solid #eeeeee;
+}
+header#inside-header ul li a{
+    color: silver;
+}
+header#inside-header ul li a:hover, header#inside-header ul li.active a{
+    color: #16a085;
+}
+div.banner-up, div.banner-down.inside{
+    margin-top: 51px;
+    height: 200px;
+}
+div.banner-up.inside div.session{
+    position: absolute;
+    width: 100%;
+    height: 29%;
+    background: rgba(0, 0, 0, .5);
+    text-align: center;
+}
+div.banner-up.inside div.session h1{
+    font-size: 50px;
+    color: white;
+    letter-spacing: 0.2em;
+    margin-bottom: 0px;
+}
+div.banner-up.inside div.session p{
+    color: white;
+    font-size: 25px;
+    margin-top: 3px;
+}
+div.breadcrumb{
+    overflow: auto;
+    padding: 0px 15px;
+    margin-top: 30px;
+}
+div.breadcrumb h3{
+    float: left;
+    margin: 0px 0px 0px 35px;
+    padding: 0px;
+}
+div.breadcrumb ul{
+    float: right;
+    list-style: none;
+    margin: 0px 35px 0px 0px;
+    padding: 0px;
+}
+div.breadcrumb ul li{
+    display: inline;
+}
+.order-form{
+    background:white;
+    overflow: auto;
+    margin: auto;
+    width: 80%;
+    padding: 15px;
+    margin-top: 30px;
+}
+.order-form .form-left{
+    float: left;
+    width: 50%;
+}
+.order-form .form-right{
+    float: left;
+    width: 50%;
+}
+.order-form .form-right textarea{
+    height: 180px;
+}
+
+/*** list page ***/
+.order-form table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.order-form table tr td{
+    padding: 10px;
+}
+.order-form table tr td a{
+    text-decoration: none;
+    color: gray;
+}
+.order-form table tbody tr:hover, .order-form table tbody tr:hover td, .order-form table tbody tr:hover td a{
+    background: silver;
+    color: white;
+}
+.order-form table tr td img{
+    width: 40px;
+    height: 40px;
+}
+#product-details{
+    margin-top: 30px;
+}
+
+/** admin home page **/
+.green{
+    background: #16a085;
+}
+.red{
+    background: #e05d6f;
+}
+.blue{
+    background: #418bca;
+}
+.orange{
+    background: #f0ad4e;
+}
+.brown{
+    background: #d9534f;
+}
+.mangeta{
+    background: #3f4e62;
+}
+.sys-stats{
+    width: 25%;
+    margin: 2% 2.5%;
+    float: left;
+    padding: 30px 15px;
+    text-align: center;
+}
+.sys-stats h1, .sys-stats p{
+    padding: 0px;
+    margin: 0px;
+    color: white;
+}
+
+/** profile page **/
+.form-left.profile{
+    width: 30%;
+}
+.form-left.profile img{
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.form-right.profile{
+    padding: 0px 0px 0px 20px;
+    width: 68%;
+}
+.form-right.profile .text{
+    float: left;
+    text-align: left;
+    margin: 0px 2.5%;
+}
+.form-right.profile h3,.form-right.profile p{
+    display: block;
+}
+.form-right.profile .sys-stats{
+    width: 40%;
+}
+
+/*** ipad pro ***/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+
+/*** smartphone ***/
+@media only screen and (max-width: 768px) {
+    img.landing-img{
+        height: 200px;
+    }
+    header img{
+        margin-left: 25px;
+    }
+    header ul{
+        margin-right: 15px; 
+    }
+    header ul li{
+        margin: 0px 5px 0px 0px;
+    }
+    div.stats{
+        top: 22%;
+        height: auto;
+    }
+    div.rcd{
+        width: 45%;
+    }
+    div.rcd h3{
+        font-size: 14px;
+    }
+    div.rcd img{
+        margin-left: 35%;
+    }
+    div.about-us{
+        margin-top: 390px;
+    }
+    div.about-us-content img{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        height: 288px;
+    }
+    div.about-us-content div.abt-cont{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+    div.about-us-content div.abt-cont h1{
+        margin: 15px 0px 0px 0px;
+    }
+    div.banner-up{
+        height: 100px;
+    } 
+    div.banner-down{
+        height: 300px;
+    }
+    div.service-section .service-details{
+        width: 100%;
+        margin: 1% 0px;
+        float: none;
+        padding: 0px;
+    }
+    div.login-wrapper .wrap{
+        width: 80%;
+        margin-top: 40%;
+    }
+    div#signup-wrapper .wrap{
+        width: 80%;
+        margin-top: 25%;
+    }
+
+    div.breadcrumb h3{
+        margin-left: 10px;
+    }
+    div.breadcrumb ul{
+        margin-right: 8px;
+    }
+    .order-form .form-left, .order-form .form-right{
+        float: none;
+        width: 97%;
+    }
+    .order-form .sys-stats{
+        width: 90%;
+        margin: 3% 0px;
+    }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNFPA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+    <link rel="icon" type="icon/image-x" href="static/img/icon.png" /> 
+</head>
+<body>
+    <img src="static/img/pacel-baner.png" class="landing-img">
+    <header>
+        <img src="static/img/icon.png" class="icon" />
+        <ul>
+            <li><a href="#" onclick="login()">signin</a></li>
+            <li><a href="#" onclick="signup()">signup</a></li>
+        </ul>
+    </header>
+
+    <div class="stats">
+        <div class="rcd">
+            <img src="static/img/truck.png">
+            <h3 class="ctr">Delivery Trucks</h3>
+            <p class="ctr">50</p>
+        </div>
+        <div class="rcd">
+            <img src="static/img/men.png">
+            <h3 class="ctr">Delivery Men</h3>
+            <p class="ctr">100</p>
+        </div>
+        <div class="rcd">
+            <img src="static/img/ico.png">
+            <h3 class="ctr">Deliveries</h3>
+            <p class="ctr">400</p>
+        </div>
+        <div class="rcd">
+            <img src="static/img/tr.jpg">
+            <h3 class="ctr">System Users</h3>
+            <p class="ctr">150</p>
+        </div>
+    </div>
+
+    <div class="about-us">
+        <div class='about-us-content'>
+            <img src="static/img/about.png" />
+            <div class="abt-cont">
+                <h1 class="ctr">ABOUT US</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner-up">
+        <img src="static/img/banner-up.png" />
+    </div>
+
+    <div class="services" style="margin-bottom: 30px;">
+        <div class="service-section">
+            <div class="service-details">
+                <img src="static/img/tr.jpg" />
+                <h3 class="ctr">Service Name</h3>
+                <p class="ctr">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="service-details">
+                <img src="static/img/tr.jpg" />
+                <h3 class="ctr">Service Name</h3>
+                <p class="ctr">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="service-details">
+                <img src="static/img/tr.jpg" />
+                <h3 class="ctr">Service Name</h3>
+                <p class="ctr">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="service-details">
+                <img src="static/img/tr.jpg" />
+                <h3 class="ctr">Service Name</h3>
+                <p class="ctr">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="service-details">
+                <img src="static/img/tr.jpg" />
+                <h3 class="ctr">Service Name</h3>
+                <p class="ctr">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="service-details">
+                <img src="static/img/tr.jpg" />
+                <h3 class="ctr">Service Name</h3>
+                <p class="ctr">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-wrapper" id="login-wrapper">
+        <div class="wrap">
+            <p><img src="static/img/icon.png" /></p>
+            <div class="form">
+                <p id="login-error"></p>
+                <div class="text">
+                    <label>Email</label>
+                    <input type="text" id="login-username" placeholder="enter email" /> 
+                </div>
+                <div class="text">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="enter password" /> 
+                </div>
+                <div class="text">
+                    <input type="checkbox" checked />
+                    <span>Remember Me</span>
+                </div>
+                <div class="text">
+                    <button class="success" onclick="signin()">Login</button>
+                    <button class="danger" onclick="cls()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="login-wrapper" id="signup-wrapper">
+        <div class="wrap">
+            <p><img src="static/img/icon.png" /></p>
+            <div class="form">
+                <p id="sign-error"></p>
+                <div class="text">
+                    <label>Username</label>
+                    <input type="text" id="sign-username" placeholder="enter username" /> 
+                </div>
+                <div class="text">
+                    <label>Firstname</label>
+                    <input type="text" id="sign-firstname" placeholder="enter firstname" /> 
+                </div>
+                <div class="text">
+                    <label>Lastname</label>
+                    <input type="text" id="sign-lastname" placeholder="enter lastname" /> 
+                </div>
+                <div class="text">
+                    <label>Email</label>
+                    <input type="email" id="sign-email" placeholder="enter email" /> 
+                </div>
+                <div class="text">
+                    <label>Contact</label>
+                    <input type="text" id="sign-contact" placeholder="enter contact" /> 
+                </div>
+                <div class="text">
+                    <label>Password</label>
+                    <input type="password" id="sign-password" placeholder="enter password" /> 
+                </div>
+                <div class="text">
+                    <button class="success" onclick="adduser()">Signup</button>
+                    <button class="danger" onclick="cls()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; copy rights reserved</p>
+    </footer>
+</body>
+<script src="static/js/main.js"></script>
+</html>
