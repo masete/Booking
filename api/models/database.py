@@ -50,7 +50,7 @@ class DatabaseConnection:
         )
         try:
 
-            if os.getenv("ENV") == "production":
+            if os.getenv("FLASK_ENV") == "production":
                 self.credentials_heroku = """
                             dbname='deipk3r58od4el' 
                             user= 'aknlwxnofjeegn'
@@ -75,6 +75,8 @@ class DatabaseConnection:
                                                    password='masete',
                                                    host='localhost',
                                                    port='5432', cursor_factory=RealDictCursor)
+
+            self.connection = psycopg2.connect(self.credentials, cursor_factory=RealDictCursor)
             self.connection.autocommit = True
             self.cursor = self.connection.cursor()
 
