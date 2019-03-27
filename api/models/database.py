@@ -59,7 +59,7 @@ class DatabaseConnection:
                             port =5432
 
                             """
-
+                self.credentials = self.credentials_heroku
 
             elif os.getenv("FLASK_ENV") == "TESTING":
                 print('Connecting to test db')
@@ -76,10 +76,9 @@ class DatabaseConnection:
                                                    host='localhost',
                                                    port='5432', cursor_factory=RealDictCursor)
 
-            self.cursor = self.connection.cursor()
-            self.credentials = self.credentials_heroku
-            self.connection = psycopg2.connect(self.credentials, cursor_factory=RealDictCursor)
+            # self.connection = psycopg2.connect(self.credentials, cursor_factory=RealDictCursor)
             self.connection.autocommit = True
+            self.cursor = self.connection.cursor()
 
             for command in self.commands:
                 self.cursor.execute(command)
