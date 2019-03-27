@@ -52,14 +52,14 @@ class DatabaseConnection:
 
             if os.getenv("FLASK_ENV") == "production":
                 self.credentials_heroku = """
-                            dbname='deipk3r58od4el' 
+                            dbname='deipk3r58od4el'
                             user= 'aknlwxnofjeegn'
-                            password = '538e8ddb510fc957f338a5b5ce6c0a941b8a4c17ee95286fa1301738d83e4632' 
-                            host='ec2-50-19-109-120.compute-1.amazonaws.com' 
-                            port =5432 
-                            
+                            password = '538e8ddb510fc957f338a5b5ce6c0a941b8a4c17ee95286fa1301738d83e4632'
+                            host='ec2-50-19-109-120.compute-1.amazonaws.com'
+                            port =5432
+
                             """
-                self.credentials = self.credentials_heroku
+
 
             elif os.getenv("FLASK_ENV") == "TESTING":
                 print('Connecting to test db')
@@ -76,9 +76,10 @@ class DatabaseConnection:
                                                    host='localhost',
                                                    port='5432', cursor_factory=RealDictCursor)
 
+            self.cursor = self.connection.cursor()
+            self.credentials = self.credentials_heroku
             self.connection = psycopg2.connect(self.credentials, cursor_factory=RealDictCursor)
             self.connection.autocommit = True
-            self.cursor = self.connection.cursor()
 
             for command in self.commands:
                 self.cursor.execute(command)
