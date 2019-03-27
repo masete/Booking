@@ -47,7 +47,7 @@ function signin(){
                 if (data['usertype'] == 'admin'){
                     window.location.href = "pages/admin/home.html";
                 }else{
-                    window.location.href = "pages/user/order.html";        
+                    window.location.href = "index.html";        
                 }
             }
             setTimeout(function(){
