@@ -85,9 +85,9 @@ class DatabaseConnection:
         except Exception as error:
             print(f"error: {error}")
 
-        self.cursor.execute("SELECT * FROM users WHERE email= '{}'".format("admin@gmail.com"))
-        if self.cursor.fetchone():
-            return None
+        # self.cursor.execute("SELECT * FROM users WHERE email= '{}'".format("admin@gmail.com"))
+        # if self.cursor.fetchone():
+        #     return None
         # set admin user
 
         sql = "INSERT INTO users(username, email, password, as_admin) VALUES('admin', 'admin@gmail.com', 12345, True)"
