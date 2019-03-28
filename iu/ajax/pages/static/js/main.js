@@ -85,6 +85,8 @@ function adduser(){
             password: pas.value
         }
 
+        console.log(payload)
+
         fetch("  https://bookingv1w2.herokuapp.com/api/auth/add_user", {
             method: 'POST',
             headers: {
@@ -103,9 +105,9 @@ function adduser(){
                 error.style.background = "#16a085";
                 error.style.display = "block";
             }
-            setTimeout(function(){
-                error.style.display = "none";
-            }, 3000)
+            // setTimeout(function(){
+            //     error.style.display = "none";
+            // }, 3000)
         })
     }
 }
