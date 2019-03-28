@@ -20,27 +20,16 @@ function signUpAccount() {
         },
         body: JSON.stringify(newUser),
     })
-        .then((response) => response.json())
+//        .then((response) => response.json())
         .then((data) => {
-//            if (data.status === 400) {
-//                //Bad format data
-//                displayError(data.error);
-//
-//
-//            } else if (data.status === 409) {
-//                //Duplicate username, email or phone number
-//                displayError(data.error);
-//
-//            } else if (data.status === 201) {
-//                //on success
 //
             document.getElementById("message").style.display = "block";
             document.getElementById("message").innerHTML = data["data"][0].success;
             window.setTimeout(function () {
-                window.location.replace("../index.html");
+                window.location.replace();
             }, 3000);
 //
-//            }
+            }
 //
 //
 //        })
