@@ -14,6 +14,8 @@ class DatabaseConnection:
             CREATE TABLE IF NOT EXISTS users(
                     user_id SERIAL PRIMARY KEY,
                     username VARCHAR(50) NOT NULL,
+                    first_name VARCHAR(50) NOT NULL,
+                    last_name VARCHAR(50) NOT NULL,
                     email VARCHAR(100) NOT NULL,
                     password VARCHAR(200) NOT NULL, 
                     as_admin BOOLEAN DEFAULT FALSE NOT NULL
@@ -82,7 +84,7 @@ class DatabaseConnection:
             return None
         # set admin user
 
-        sql = "INSERT INTO users(username, email, password, as_admin) VALUES('admin', 'admin@gmail.com', 12345, True)"
+        sql = "INSERT INTO users(username, first_name, last_name, email, password, as_admin) VALUES('admin','mukite','rebeccah', 'admin@gmail.com', 12345, True)"
 
         self.cursor.execute(sql)
         self.connection.commit()

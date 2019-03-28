@@ -12,13 +12,15 @@ user_blueprint = Blueprint("User", __name__)
 def add_user():
     data = request.get_json()
     username = data.get('username')
+    first_name = data.get('first_name')
+    last_name = data.get('last_name')
     email = data.get('email')
     password = data.get('password')
 
-    new_user = user.add_new_user(username, email, password)
+    new_user = user.add_new_user(username, first_name, last_name, email, password)
     if new_user:
-        return jsonify({"message": "user added successfully"})
-    return jsonify({"message": "user not added"})
+        return jsonify({"status": "success", "message": "user added successfully"})
+    return jsonify({"status": "failure", "error": {"message": "user not added"}})
 
 
 @user_blueprint.route('/api/auth/login', methods=['POST'], strict_slashes=False)

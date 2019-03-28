@@ -6,15 +6,17 @@ class Users:
     cursor = DatabaseConnection().cursor
     users_list = []
 
-    def __init__(self, user_id=None, username=None, email=None, password=None, admin=False):
+    def __init__(self, user_id=None, username=None, first_name=None, last_name=None, email=None, password=None, admin=False):
         self.user_id = user_id
         self.username = username
+        self.first_name = first_name
+        self.last_name = last_name
         self.email = email
         self.password = password
         self.admin = admin
 
-    def add_new_user(self, username, email, password):
-        query = "INSERT INTO users(username, email, password) VALUES('{}','{}','{}')".format(username, email, password)
+    def add_new_user(self, username, first_name, last_name, email, password):
+        query = "INSERT INTO users(username, first_name, last_name, email, password) VALUES('{}','{}','{}','{}','{}')".format(username, first_name, last_name, email, password)
         self.cursor.execute(query)
         return jsonify({"massage": "user added succefully"})
 
