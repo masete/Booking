@@ -11,7 +11,7 @@ function signUpAccount() {
 
     let url = "https://booing-373.herokuapp.com/api/auth/add_user";
     let newUser = {
-        username: sign-username.value
+        username: sign-username.value,
         first_name: sign-firstname.value,
         last_name: sign-lastname.value,
         email: sign-email.value,
