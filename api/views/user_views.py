@@ -20,7 +20,7 @@ def add_user():
     new_user = user.add_new_user(username, first_name, last_name, email, password)
     print(new_user)
     if new_user:
-        return jsonify({"message": "user added successfully"}), 201
+        return jsonify({"status": 201, "data": [{"success": "user added successfully"}]}), 201
     return jsonify({"message": "user not added"})
 
 
