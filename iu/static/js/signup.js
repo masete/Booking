@@ -38,7 +38,7 @@ function signUpAccount() {
             })
 //
 //
-        }
+
         .catch((error) => console.log(error));
 
 }
