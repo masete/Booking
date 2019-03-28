@@ -26,7 +26,7 @@ function signUpAccount() {
         },
         body: JSON.stringify(newUser),
     })
-//        .then((response) => response.json())
+        .then((response) => response.json())
         .then((data) => {
 //
             document.getElementById("message").style.display = "block";
@@ -38,7 +38,7 @@ function signUpAccount() {
             }
 //
 //
-//        })
-//        .catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
 
 }
