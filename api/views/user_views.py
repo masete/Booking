@@ -19,8 +19,8 @@ def add_user():
 
     new_user = user.add_new_user(username, first_name, last_name, email, password)
     if new_user:
-        return jsonify({"status": "success", "message": "user added successfully"})
-    return jsonify({"status": "failure", "error": {"message": "user not added"}})
+        return jsonify({"message": "user added successfully"})
+    return jsonify({"message": "user not added"})
 
 
 @user_blueprint.route('/api/auth/login', methods=['POST'], strict_slashes=False)

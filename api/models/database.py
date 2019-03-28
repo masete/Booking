@@ -84,7 +84,8 @@ class DatabaseConnection:
             return None
         # set admin user
 
-        sql = "INSERT INTO users(username, first_name, last_name, email, password, as_admin) VALUES('admin','mukite','rebeccah', 'admin@gmail.com', 12345, True)"
+        sql = "INSERT INTO users(username, first_name, last_name, email, password, as_admin) VALUES('admin','mukite'," \
+              "'rebeccah', 'admin@gmail.com', 12345, True)"
 
         self.cursor.execute(sql)
         self.connection.commit()
