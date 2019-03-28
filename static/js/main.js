@@ -8,11 +8,11 @@ function login(){
 }
 
 function signin(){
-    var username = document.getElementById("login-username");
+    var email = document.getElementById("login-email");
     var password = document.getElementById("login-password");
     var error = document.getElementById("login-error");
 
-    if( username.value == '' || password.value == ''){
+    if( email.value == '' || password.value == ''){
         error.innerHTML = "<strong>Error! </strong> no empty field is allowed";
         error.style.display = "block";
 
@@ -22,11 +22,11 @@ function signin(){
     }else{
 
         payload = {
-            username: username.value,
+            email: email.value,
             password: password.value
         }
 
-        fetch("https://bagzie-send-it-final.herokuapp.com/api/v2/auth/login", {
+        fetch("  https://bookingv1w2.herokuapp.com/api/auth/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ function signin(){
                 if (data['usertype'] == 'admin'){
                     window.location.href = "pages/admin/home.html";
                 }else{
-                    window.location.href = "index.html";        
+                    window.location.href = "pages/user/order.html";        
                 }
             }
             setTimeout(function(){
@@ -66,11 +66,10 @@ function adduser(){
     var first = document.getElementById("sign-firstname");
     var last = document.getElementById("sign-lastname");
     var eml = document.getElementById("sign-email");
-    var cont = document.getElementById("sign-contact");
     var pas = document.getElementById("sign-password");
     var error = document.getElementById("sign-error");
 
-    if(usr.value == '' && first.value == '' && last.value == '' && eml.value == '' && cont.value == '' && pas.value == ''){
+    if(usr.value == '' && first.value == '' && last.value == '' && eml.value == ''  && pas.value == ''){
         error.innerHTML = "<strong>Error! </strong> No empty field is allowed";
         error.style.display = "block";
 
@@ -80,14 +79,13 @@ function adduser(){
     }else{
         payload = {
             username: usr.value,
-            firstname: first.value,
-            lastname: last.value,
+            first_name: first.value,
+            lastn_ame: last.value,
             email: eml.value,
-            contact: cont.value,
             password: pas.value
         }
 
-        fetch("https://bagzie-send-it-final.herokuapp.com/api/v2/auth/signup", {
+        fetch("  https://bookingv1w2.herokuapp.com/api/auth/add_user", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
