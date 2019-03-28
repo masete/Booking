@@ -8,7 +8,8 @@ function signUpAccount() {
         firstname: sign-firstname.value,
         lastname: sign-lastname.value,
         email: sign-email.value,
-        password: sign-password.value,};
+        password: sign-password.value
+        };
 
 
     fetch(url, {
