@@ -4,6 +4,7 @@ let fname = document.getElementById("sign-firstname");
 let lname = document.getElementById("sign-lastname");
 let email = document.getElementById("sign-email");
 let pwd = document.getElementById("sign-password");
+//let error = document.getElementById("message-error");
 
 
 function signUpAccount() {
@@ -29,8 +30,8 @@ function signUpAccount() {
         .then((response) => response.json())
         .then((data) => {
 //
-            document.getElementById("message").style.display = "block";
-            document.getElementById("message").innerHTML = data["data"][0].success;
+            document.getElementById("message-error").style.display = "block";
+            document.getElementById("message-error").innerHTML = data["data"][0].success;
             window.setTimeout(function () {
                 window.location.replace();
             }, 3000);
