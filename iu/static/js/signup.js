@@ -1,12 +1,19 @@
 
+let username = document.getElementById("sign-username");
+let first_name = document.getElementById("sign-firstname");
+let last_name = document.getElementById("sign-lastname");
+let email = document.getElementById("sign-email");
+let password = document.getElementById("sign-password");
+
+
 function signUpAccount() {
 
 
     let url = "https://booing-373.herokuapp.com/api/auth/add_user";
     let newUser = {
         username: sign-username.value
-        firstname: sign-firstname.value,
-        lastname: sign-lastname.value,
+        first_name: sign-firstname.value,
+        last_name: sign-lastname.value,
         email: sign-email.value,
         password: sign-password.value
         };
