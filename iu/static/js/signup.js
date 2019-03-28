@@ -35,10 +35,10 @@ function signUpAccount() {
                 window.location.replace();
             }, 3000);
 //
-            }
+            })
 //
 //
-        })
+        }
         .catch((error) => console.log(error));
 
 }
