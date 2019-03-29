@@ -1,3 +1,11 @@
+var lgn = document.getElementById("login-wrapper");
+var sgn = document.getElementById("signup-wrapper");
+lgn.style.display = "none";
+sgn.style.display = "none";
+
+function login(){
+    lgn.style.display = "block";
+}
 
 let uname = document.getElementById("sign-username");
 let fname = document.getElementById("sign-firstname");
@@ -86,3 +94,10 @@ function cls(){
     lgn.style.display = "none";
     sgn.style.display = "none";
 }
+
+function changedesination(){
+    lgn.style.display = "block";
+}
+
+function changelocation(){
+    sgn.style.display = "block";
