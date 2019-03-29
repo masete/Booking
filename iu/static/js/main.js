@@ -87,6 +87,7 @@ function adduser(){
             email: eml.value,
             password: pas.value
         }
+        console.log(payload)
 
         fetch(url, {
             method: 'POST',
