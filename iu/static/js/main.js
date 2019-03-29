@@ -99,7 +99,7 @@ function adduser(){
             }),
             body: JSON.stringify(payload)
         })
-        .then(res => res.json())
+//        .then(res => res.json())
         .then(function(data){
             if (data['status'] == 'failure'){
                 error.innerHTML = "<strong>Error! </strong> " + data['error']['message'];
