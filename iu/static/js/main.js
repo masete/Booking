@@ -90,28 +90,29 @@ function adduser(){
         console.log(payload)
 
         fetch(url, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
+            method: "POST",
+            mode: "no-cors",
+            credentials: "include",
+            cache: "no-cache",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(payload)
         })
-        .then(res => res.json())
-        .then(function(data){
-            if (data['status'] == 'failure'){
-                error.innerHTML = "<strong>Error! </strong> " + data['error']['message'];
-                error.style.display = "block";
-            }else{
-                error.innerHTML = "<strong>Info! </strong> " + data['message'];
-                error.style.background = "#16a085";
-                error.style.display = "block";
-            }
-            setTimeout(function(){
-                error.style.display = "none";
-            }, 3000)
-        })
+//        .then(res => res.json())
+//        .then(function(data){
+//            if (data['status'] == 'failure'){
+//                error.innerHTML = "<strong>Error! </strong> " + data['error']['message'];
+//                error.style.display = "block";
+//            }else{
+//                error.innerHTML = "<strong>Info! </strong> " + data['message'];
+//                error.style.background = "#16a085";
+//                error.style.display = "block";
+//            }
+//            setTimeout(function(){
+//                error.style.display = "none";
+//            }, 3000)
+//        })
     }
 }
 

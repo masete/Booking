@@ -12,6 +12,9 @@ user_blueprint = Blueprint("User", __name__)
 def add_user():
     try:
         data = request.get_json()
+
+        print(data)
+
         username = data.get('username')
         first_name = data.get('first_name')
         last_name = data.get('last_name')
