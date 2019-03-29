@@ -3,9 +3,6 @@ var sgn = document.getElementById("signup-wrapper");
 lgn.style.display = "none";
 sgn.style.display = "none";
 
-function login(){
-    lgn.style.display = "block";
-}
 
 let uname = document.getElementById("sign-username");
 let fname = document.getElementById("sign-firstname");
