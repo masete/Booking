@@ -42,9 +42,9 @@ function signUpAccount() {
                 window.location.replace("../index.html");
                 }, 3000);
 
+              }
+
             })
-
-
         .catch((data.error) => console.log(data.error));
 
-}}
+}
