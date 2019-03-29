@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, make_response
 from flask_jwt_extended import (jwt_required, get_jwt_identity, create_access_token)
 from datetime import timedelta
 from api.models.user_model import Users
@@ -40,7 +40,7 @@ def add_user():
         return jsonify({"status": "failure", "error": {"message": "User already exists"}})
     else:
         user.add_new_user(username, first_name, last_name, email, password)
-        response = (jsonify({"status": "success", "message": "user added successfully"}), 201)
+    response = make_response((jsonify({"status": "success", "message": "user added successfully"}), 201))
     return response
 
 
