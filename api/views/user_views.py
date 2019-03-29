@@ -17,8 +17,17 @@ def add_user():
         last_name = data.get('last_name')
         email = data.get('email')
         password = data.get('password')
-    except:
-        return jsonify({"error": "bad request"}), 400
+
+    except KeyError:
+        return (
+            jsonify(
+                {
+                    "error": "Please provide the correct keys for the data",
+                    "status": 422,
+                }
+            ),
+            422,
+        )
 
     user_exists = user.get_user_by_email(email)
 

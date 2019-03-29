@@ -120,7 +120,7 @@
         <div class="wrap">
             <p><img src="static/img/icon.png" /></p>
             <div class="form"  onsubmit="signUpAccount();return false">
-                <span class="success" id="message-error"></span>
+                <p class="success" id="message-error"></p>
 <!--                <p id="sign-error"></p>-->
                 <div class="text">
                     <label>Username</label>
@@ -141,7 +141,8 @@
                
                 <div class="text">
                     <label>Password</label>
-                    <input type="password" id="sign-password" placeholder="enter password" /> 
+                    <input type="password" id="sign-password" placeholder="enter password" />
+                    <p class="error" id="password-error"></p>
                 </div>
                 <div class="text">
                     <button class="success" type="submit">Signup</button>

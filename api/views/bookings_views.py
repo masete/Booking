@@ -21,8 +21,17 @@ def create_a_car_booking():
         pourpose = data.get('pourpose')
         depature_time = data.get('depature_time')
         expected_return_time = data.get('expected_return_time')
-    except:
-        return jsonify({"message": "bad request"}), 400
+
+    except KeyError:
+        return (
+            jsonify(
+                {
+                    "error": "Please provide the correct keys for the data",
+                    "status": 422,
+                }
+            ),
+            422,
+        )
 
     request_car = car.insert_new_booking(first_name, last_name, trip_destination, pourpose, depature_time, expected_return_time)
 
@@ -52,12 +61,23 @@ def get_single_booking(booking_id):
 @jwt_required
 def book_a_room():
     data = request.get_json()
+    try:
+        room_name = data.get('room_name')
+        meeting_name = data.get('meeting_name')
+        start_time = data.get('start_time')
+        end_time = data.get('end_time')
+        meeting_duraion = data.get('meeting_duration')
 
-    room_name = data.get('room_name')
-    meeting_name = data.get('meeting_name')
-    start_time = data.get('start_time')
-    end_time = data.get('end_time')
-    meeting_duraion = data.get('meeting_duration')
+    except KeyError:
+        return (
+            jsonify(
+                {
+                    "error": "Please provide the correct keys for the data",
+                    "status": 422,
+                }
+            ),
+            422,
+        )
 
     room_record = room.insert_room_booking(room_name, meeting_name, start_time, end_time, meeting_duraion)
 

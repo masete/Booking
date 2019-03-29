@@ -7,6 +7,26 @@ let pwd = document.getElementById("sign-password");
 //let error = document.getElementById("message-error");
 
 
+function validatePasswordStrength() {
+    let passwordError = document.getElementById("password-error");
+
+    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(password.value)) {
+        passwordError.style.display = "none";
+        password.setCustomValidity("");
+
+    } else {
+        passwordError.style.display = "block";
+        passwordError.innerHTML = "Password Must contain a Minimum 8 characters" +
+            " with atleast one upper case letter, atleast on lower case letter and atleast one number.";
+        password.setCustomValidity("Weak Password.");
+
+    }
+
+}
+
+password.onkeyup = validatePasswordStrength;
+password.onchange = validatePasswordStrength;
+
 function signUpAccount() {
 
 
