@@ -34,10 +34,10 @@ def add_user():
     # new_user = user.add_new_user(username, first_name, last_name, email, password)
 
     if user_exists:
-        return jsonify({"error": "User already exists"})
+        return jsonify({"status": "failure", "error": {"message": "User already exists"}})
     else:
         user.add_new_user(username, first_name, last_name, email, password)
-        response = (jsonify({"status": 201, "data": [{"success": "user added successfully"}]}), 201)
+        response = (jsonify({"status": "success", "message": "user added successfully"}), 201)
     return response
 
 

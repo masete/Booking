@@ -8,11 +8,11 @@ function login(){
 }
 
 function signin(){
-    var email = document.getElementById("login-email");
+    var username = document.getElementById("login-username");
     var password = document.getElementById("login-password");
     var error = document.getElementById("login-error");
 
-    if( email.value == '' || password.value == ''){
+    if( username.value == '' || password.value == ''){
         error.innerHTML = "<strong>Error! </strong> no empty field is allowed";
         error.style.display = "block";
 
@@ -22,11 +22,11 @@ function signin(){
     }else{
 
         payload = {
-            email: email.value,
+            username: username.value,
             password: password.value
         }
 
-        fetch("  https://bookingv1w2.herokuapp.com/api/auth/login", {
+        fetch("https://bagzie-send-it-final.herokuapp.com/api/v2/auth/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ function signin(){
                 if (data['usertype'] == 'admin'){
                     window.location.href = "pages/admin/home.html";
                 }else{
-                    window.location.href = "pages/user/order.html";        
+                    window.location.href = "pages/user/order.html";
                 }
             }
             setTimeout(function(){
@@ -69,7 +69,7 @@ function adduser(){
     var pas = document.getElementById("sign-password");
     var error = document.getElementById("sign-error");
 
-    if(usr.value == '' && first.value == '' && last.value == '' && eml.value == ''  && pas.value == ''){
+    if(usr.value == '' && first.value == '' && last.value == '' && eml.value == '' && cont.value == '' && pas.value == ''){
         error.innerHTML = "<strong>Error! </strong> No empty field is allowed";
         error.style.display = "block";
 
@@ -79,15 +79,14 @@ function adduser(){
     }else{
         payload = {
             username: usr.value,
-            first_name: first.value,
-            lastn_ame: last.value,
+            firstname: first.value,
+            lastname: last.value,
             email: eml.value,
+            contact: cont.value,
             password: pas.value
         }
 
-        console.log(payload)
-
-        fetch("  https://bookingv1w2.herokuapp.com/api/auth/add_user", {
+        fetch("https://booing-373.herokuapp.com/api/auth/add_user", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -105,9 +104,9 @@ function adduser(){
                 error.style.background = "#16a085";
                 error.style.display = "block";
             }
-            // setTimeout(function(){
-            //     error.style.display = "none";
-            // }, 3000)
+            setTimeout(function(){
+                error.style.display = "none";
+            }, 3000)
         })
     }
 }
