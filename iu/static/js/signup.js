@@ -30,17 +30,21 @@ function signUpAccount() {
     })
         .then((response) => response.json())
         .then((data) => {
-//
-            document.getElementById("message-error").style.display = "block";
-            document.getElementById("message-error").innerHTML = data["data"][0].success;
-            window.setTimeout(function () {
-                window.location.replace();
-            }, 3000);
-//
-            })
-//
-//
+             if (data.status === 400) {
+                //Bad format data
+                displayError(data.error);
 
-        .catch((error) => console.log(error));
+             }
+              else if (data.status === 201) {
+                document.getElementById("message-error").style.display = "block";
+                document.getElementById("message-error").innerHTML = data["data"][0].success;
+                window.setTimeout(function () {
+                window.location.replace("../index.html");
+                }, 3000);
+
+            })
+
+
+        .catch((data.error) => console.log(data.error));
 
 }
