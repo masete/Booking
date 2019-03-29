@@ -10,7 +10,7 @@ let pwd = document.getElementById("sign-password");
 function validatePasswordStrength() {
     let passwordError = document.getElementById("password-error");
 
-    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(password.value)) {
+    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(pwd.value)) {
         passwordError.style.display = "none";
         password.setCustomValidity("");
 
@@ -24,8 +24,8 @@ function validatePasswordStrength() {
 
 }
 
-password.onkeyup = validatePasswordStrength;
-password.onchange = validatePasswordStrength;
+pwd.onkeyup = validatePasswordStrength;
+pwd.onchange = validatePasswordStrength;
 
 function signUpAccount() {
 
