@@ -28,6 +28,7 @@ function signin(){
 
         fetch("https://bagzie-send-it-final.herokuapp.com/api/v2/auth/login", {
             method: 'POST',
+            mode:'no-cors',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
