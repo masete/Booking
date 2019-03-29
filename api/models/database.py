@@ -93,11 +93,11 @@ class DatabaseConnection:
     """
     method to drop tables being used in my tests
     """
-    def drop_tables(self):
-        query = "DROP TABLE IF EXISTS {} CASCADE"
-        table_names = ["car_booking, users"]
-        for name in table_names:
-            self.cursor.execute(query.format(name))
+    # def drop_tables(self):
+    #     query = "DROP TABLE IF EXISTS {} CASCADE"
+    #     table_names = ["car_booking, users"]
+    #     for name in table_names:
+    #         self.cursor.execute(query.format(name))
 
     def create_tables(self):
         for command in self.commands:
