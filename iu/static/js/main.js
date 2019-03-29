@@ -99,20 +99,31 @@ function adduser(){
             }),
             body: JSON.stringify(payload)
         })
-//        .then(res => res.json())
-        .then(function(data){
-            if (data['status'] == 'failure'){
-                error.innerHTML = "<strong>Error! </strong> " + data['error']['message'];
-                error.style.display = "block";
-            }else{
-                error.innerHTML = "<strong>Info! </strong> " + data['message'];
-                error.style.background = "#16a085";
-                error.style.display = "block";
+        .then(function(response){
+            if (response.status !== 201){
+                console.log('response status is not equal to 201: ${response.status}');
+                return ;
             }
-            setTimeout(function(){
-                error.style.display = "none";
-            }, 3000)
+            response.json().then(function(data)){
+               console.log(data)
+            }
+
         })
+//        .then(res => res.json())
+
+//        .then(function(data){
+//            if (data['status'] == 'failure'){
+//                error.innerHTML = "<strong>Error! </strong> " + data['error']['message'];
+//                error.style.display = "block";
+//            }else{
+//                error.innerHTML = "<strong>Info! </strong> " + data['message'];
+//                error.style.background = "#16a085";
+//                error.style.display = "block";
+//            }
+//            setTimeout(function(){
+//                error.style.display = "none";
+//            }, 3000)
+//        })
     }
 }
 
