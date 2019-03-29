@@ -69,7 +69,7 @@ function adduser(){
     var pas = document.getElementById("sign-password");
     var error = document.getElementById("sign-error");
 
-    if(usr.value == '' && first.value == '' && last.value == '' && eml.value == '' && cont.value == '' && pas.value == ''){
+    if(usr.value == '' && first.value == '' && last.value == '' && eml.value == '' && pas.value == ''){
         error.innerHTML = "<strong>Error! </strong> No empty field is allowed";
         error.style.display = "block";
 
@@ -82,7 +82,6 @@ function adduser(){
             firstname: first.value,
             lastname: last.value,
             email: eml.value,
-            contact: cont.value,
             password: pas.value
         }
 
