@@ -70,6 +70,8 @@ function adduser(){
     var pas = document.getElementById("sign-password");
     var error = document.getElementById("sign-error");
 
+    let url = "https://booing-373.herokuapp.com/api/auth/add_user";
+
     if(usr.value == '' && first.value == '' && last.value == '' && eml.value == '' && pas.value == ''){
         error.innerHTML = "<strong>Error! </strong> No empty field is allowed";
         error.style.display = "block";
@@ -86,8 +88,9 @@ function adduser(){
             password: pas.value
         }
 
-        fetch("https://booing-373.herokuapp.com/api/auth/add_user", {
+        fetch(url, {
             method: 'POST',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
