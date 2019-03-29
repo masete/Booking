@@ -77,10 +77,11 @@ function signUpAccount() {
              }
               else if (data.status === 201) {
                 document.getElementById("message-error").style.display = "block";
-                 document.getElementById("message-error").innerHTML = "fuck off buddy.";
+                document.getElementById("message-error").innerHTML = "fuck off buddy.";
 //                document.getElementById("message-error").innerHTML = data["data"][0].success;
                 window.setTimeout(function () {
-                window.location.replace("../index.html");
+                document.getElementById("message-error").style.display = "none";
+                }
                 }, 3000);
 
               }
