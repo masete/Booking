@@ -47,4 +47,4 @@ function signUpAccount() {
 
         .catch((data.error) => console.log(data.error));
 
-}
+}}

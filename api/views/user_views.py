@@ -10,12 +10,15 @@ user_blueprint = Blueprint("User", __name__)
 
 @user_blueprint.route('/api/auth/add_user', methods=['POST'], strict_slashes=False)
 def add_user():
-    data = request.get_json()
-    username = data.get('username')
-    first_name = data.get('first_name')
-    last_name = data.get('last_name')
-    email = data.get('email')
-    password = data.get('password')
+    try:
+        data = request.get_json()
+        username = data.get('username')
+        first_name = data.get('first_name')
+        last_name = data.get('last_name')
+        email = data.get('email')
+        password = data.get('password')
+    except:
+        return jsonify({"error": "bad request"}), 400
 
     user_exists = user.get_user_by_email(email)
 
