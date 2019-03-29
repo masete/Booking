@@ -82,8 +82,8 @@ function adduser(){
     }else{
         payload = {
             username: usr.value,
-            firstname: first.value,
-            lastname: last.value,
+            first_name: first.value,
+            last_name: last.value,
             email: eml.value,
             password: pas.value
         }
