@@ -28,7 +28,7 @@ function signUpAccount() {
         },
         body: JSON.stringify(newUser),
     })
-//        .then((response) => response.json())
+        .then((response) => response.json())
         .then((data) => {
 //
             document.getElementById("message-error").style.display = "block";

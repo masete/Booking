@@ -17,11 +17,16 @@ def add_user():
     email = data.get('email')
     password = data.get('password')
 
-    new_user = user.add_new_user(username, first_name, last_name, email, password)
-    print(new_user)
-    if new_user:
-        return jsonify({"status": 201, "data": [{"success": "user added successfully"}]}), 201
-    return jsonify({"message": "user not added"})
+    user_exists = user.get_user_by_email(email)
+
+    # new_user = user.add_new_user(username, first_name, last_name, email, password)
+
+    if user_exists:
+        return jsonify({"error": "User already exists"})
+    else:
+        user.add_new_user(username, first_name, last_name, email, password)
+        response = (jsonify({"status": 201, "data": [{"success": "user added successfully"}]}), 201)
+    return response
 
 
 @user_blueprint.route('/api/auth/login', methods=['POST'], strict_slashes=False)
