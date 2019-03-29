@@ -27,6 +27,18 @@ function validatePasswordStrength() {
 pwd.onkeyup = validatePasswordStrength;
 pwd.onchange = validatePasswordStrength;
 
+function displayError(dataArray) {
+
+    for (let key in dataArray) {
+
+        if ({}.hasOwnProperty.call(dataArray, key)) {
+            let fieldError = document.getElementById(key + "-error");
+            fieldError.style.display = "block";
+            fieldError.innerHTML = dataArray[key];
+        }
+    }
+}
+
 function signUpAccount() {
 
 
@@ -57,7 +69,8 @@ function signUpAccount() {
              }
               else if (data.status === 201) {
                 document.getElementById("message-error").style.display = "block";
-                document.getElementById("message-error").innerHTML = data["data"][0].success;
+                 document.getElementById("message-error").innerHTML = "fuck off buddy.";
+//                document.getElementById("message-error").innerHTML = data["data"][0].success;
                 window.setTimeout(function () {
                 window.location.replace("../index.html");
                 }, 3000);
@@ -67,4 +80,9 @@ function signUpAccount() {
             })
         .catch((error) => console.log(error));
 
+}
+
+function cls(){
+    lgn.style.display = "none";
+    sgn.style.display = "none";
 }
