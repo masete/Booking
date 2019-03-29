@@ -104,9 +104,9 @@ function adduser(){
                 console.log('response status is not equal to 201: ${response.status}');
                 return ;
             }
-            response.json().then(function(data)){
+            response.json().then(function(data){
                console.log(data)
-            }
+            })
 
         })
 //        .then(res => res.json())
