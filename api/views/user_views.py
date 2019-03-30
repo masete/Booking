@@ -11,15 +11,15 @@ user_blueprint = Blueprint("User", __name__)
 @user_blueprint.route('/api/auth/add_user', methods=['POST'], strict_slashes=False)
 def add_user():
     try:
-        data = request.get_json()
+        data = request.get_json(force=True)
 
         print(data)
 
-        username = data.get('username')
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
-        email = data.get('email')
-        password = data.get('password')
+        username = data['username']
+        first_name = data['first_name']
+        last_name = data['last_name']
+        email = data['email']
+        password = data['password']
 
     except KeyError:
         return (
@@ -37,7 +37,7 @@ def add_user():
     # new_user = user.add_new_user(username, first_name, last_name, email, password)
 
     if user_exists:
-        return jsonify({"status": "failure", "error": {"message": "User already exists"}})
+        return jsonify({"status": "failure", "error": {"message": "User already exists"}}), 400
     else:
         user.add_new_user(username, first_name, last_name, email, password)
     response = make_response((jsonify({"status": "success", "message": "user added successfully"}), 201))

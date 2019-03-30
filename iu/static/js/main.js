@@ -95,9 +95,17 @@ function adduser(){
             credentials: "include",
             cache: "no-cache",
             headers: new Headers({
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Accept': 'application/json, text/plain, */*',
+                'Access-Control-Allow-Origin': '*'
             }),
-            body: JSON.stringify(payload)
+            body: JSON.stringify({
+            username: usr.value,
+            first_name: first.value,
+            last_name: last.value,
+            email: eml.value,
+            password: pas.value
+        })
         })
         .then(function(response){
             if (response.status !== 201){
